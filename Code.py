@@ -1,9 +1,11 @@
-import glob
-import hashlib
+import glob #for patern matching and monitoring change in the SHA512 hash
+import hashlib #for md5 and sha512
 import os
-import tkinter as tk
+import tkinter as tk #for gui
 from tkinter.filedialog import askdirectory
-import customtkinter as ctk
+import customtkinter as ctk #for extending tkinter with extra features
+
+#setting gloal variables
 
 baselines = r"C:\Users\aksha\Desktop\Baselines" #Baseline.txt will be at this specified path
 secure_path = ""
@@ -21,7 +23,7 @@ spaces = "                                                                      
 #Calculate hash from data in a file 
 def CalculateSha512Hash(file_name):
     # BUF_SIZE is totally arbitrary, change as per your requirement
-    BUF_SIZE = 65536  # 65536 lets read stuff in 64kb chunks!
+    BUF_SIZE = 65536  # 65536 lets read stuff in 64kb chunks! #used to read the file in chunks of this size
     sha = hashlib.sha512()
     
     with open(file_name,'rb') as file:
@@ -35,7 +37,7 @@ def CalculateSha512Hash(file_name):
     
 #Calculate hash from name of a file 
 def CalculateNameHash(filename):
-    md5 = hashlib.md5()
+    md5 = hashlib.md5() #message digest 5
     md5.update(filename.encode())
     return md5.hexdigest()
 
